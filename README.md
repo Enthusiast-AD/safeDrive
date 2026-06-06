@@ -101,3 +101,7 @@ npx expo start
 
 ```
 
+## Screenshots
+![Home Screen](docs/screenshots/home.jpg)
+![Drive Screen](docs/screenshots/driveDashboard.jpg)
+![Summary Screen](docs/screenshots/summary.jpg)
