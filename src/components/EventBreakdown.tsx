@@ -12,8 +12,14 @@ export function EventBreakdown({ eventCounts }: Props) {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Event Breakdown</Text>
-      {EVENT_ORDER.map((type) => (
-        <View key={type} style={styles.row}>
+      {EVENT_ORDER.map((type, index) => (
+        <View
+          key={type}
+          style={[
+            styles.row,
+            index === EVENT_ORDER.length - 1 && { borderBottomWidth: 0 },
+          ]}>
+
           <Text style={styles.label}>{EVENT_LABELS[type]}</Text>
           <View style={styles.countBadge}>
             <Text style={styles.count}>{eventCounts[type]}</Text>
@@ -31,18 +37,19 @@ const styles = StyleSheet.create({
     padding: 16,
     borderWidth: 1,
     borderColor: 'rgba(255,255,255,0.12)',
+    width: '100%',
   },
   title: {
     color: '#F8FAFC',
     fontSize: 16,
     fontWeight: '800',
-    marginBottom: 12,
+    marginBottom: 4,
   },
   row: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingVertical: 8,
+    paddingVertical: 11,
     borderBottomWidth: 1,
     borderBottomColor: 'rgba(255,255,255,0.06)',
   },

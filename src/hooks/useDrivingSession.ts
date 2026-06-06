@@ -172,17 +172,17 @@ export function useDrivingSession() {
         DeviceMotion.addListener((data) => {
           const rotationRate = data.rotationRate
             ? {
-                x: data.rotationRate.beta ?? 0,
-                y: data.rotationRate.gamma ?? 0,
-                z: data.rotationRate.alpha ?? 0,
+                x: (data.rotationRate.beta ?? 0) * (Math.PI / 180),
+                y: (data.rotationRate.gamma ?? 0) * (Math.PI / 180),
+                z: (data.rotationRate.alpha ?? 0) * (Math.PI / 180),
               }
             : snapshotRef.current.gyroscope;
 
-          const acceleration = data.acceleration
+          const acceleration = data.accelerationIncludingGravity
             ? {
-                x: data.acceleration.x ?? 0,
-                y: data.acceleration.y ?? 0,
-                z: data.acceleration.z ?? 0,
+                x: (data.accelerationIncludingGravity.x ?? 0) / 9.80665,
+                y: (data.accelerationIncludingGravity.y ?? 0) / 9.80665,
+                z: (data.accelerationIncludingGravity.z ?? 0) / 9.80665,
               }
             : snapshotRef.current.accelerometer;
 
